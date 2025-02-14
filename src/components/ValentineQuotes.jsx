@@ -48,7 +48,7 @@ export default function ValentineQuotes() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.5 }}
-            className="text-red-500 text-center"
+            className="text-xl font-semibold text-center text-red-500"
           >
             {quotes[index]}
           </motion.h1>
