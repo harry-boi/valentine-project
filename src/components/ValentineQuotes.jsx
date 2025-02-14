@@ -28,7 +28,7 @@ export default function ValentineQuotes() {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [index]); // ✅ Runs whenever index changes
 
   return (
     <div className="flex items-center justify-center h-screen w-screen bg-pink-200 p-4">
