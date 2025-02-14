@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const quotes = [
   "You are my sunshine on a rainy day.",
@@ -28,7 +28,7 @@ export default function ValentineQuotes() {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [index]); // ✅ Runs whenever index changes
+  }, []);
 
   return (
     <div className="flex items-center justify-center h-screen w-screen bg-pink-200 p-4">
@@ -41,14 +41,18 @@ export default function ValentineQuotes() {
         >
           Bee ❤️
         </motion.h1>
-        <motion.h1
-          key={index}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          {quotes[index]}
-        </motion.h1>
+        <AnimatePresence mode="wait">
+          <motion.h1
+            key={index}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.5 }}
+            className="text-red-500 text-center"
+          >
+            {quotes[index]}
+          </motion.h1>
+        </AnimatePresence>
       </div>
     </div>
   );
